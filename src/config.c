@@ -42,6 +42,7 @@ void config_init(char const *file_addr) {
     );
     exit(EXIT_FAILURE);
   }
+  free(head);
 }
 
 void config_destroy() {
