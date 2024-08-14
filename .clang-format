@@ -1,0 +1,11 @@
+---
+BasedOnStyle: LLVM
+ColumnLimit: 80
+AlignAfterOpenBracket: BlockIndent
+AlignTrailingComments: Never
+PointerAlignment: Right
+AllowAllParametersOfDeclarationOnNextLine: true
+AlignConsecutiveDeclarations: false
+SpaceAfterCStyleCast: true
+AlwaysBreakBeforeMultilineStrings: true
+...
