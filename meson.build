@@ -12,8 +12,6 @@ src_files = [
   'src/main.c',
   'src/input.h',
   'src/input.c',
-  'src/entries.h',
-  'src/entries.c',
   'src/log.h',
   'src/log.c',
   'src/config.h',

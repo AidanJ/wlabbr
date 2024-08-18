@@ -73,7 +73,6 @@ int main(int argc, char *argv[]) {
       break;
     }
   }
-  log_report(INFO, "filename: %s", config_addr);
 
   config_init(config_addr);
 

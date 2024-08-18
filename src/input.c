@@ -4,11 +4,8 @@
 
 #include <stdbool.h>
 #include <stdint.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <threads.h>
-#include <time.h>
 
 #include "input-method-unstable-v2-client-protocol.h"
 #include <wayland-client.h>
@@ -76,7 +73,6 @@ static uint32_t input_get_left_bound() {
 // searches for the next space occurrence (or ending of surrounding text) from
 // the left of the cursor position
 static uint32_t input_get_right_bound() {
-  // printf("rb End: %u\n", state.surrounding.cursor - 1);
   if (state.surrounding.cursor != strlen(state.surrounding.text)) {
     for (uint32_t idx = state.surrounding.cursor;
          idx < strlen(state.surrounding.text); ++idx) {
@@ -141,10 +137,6 @@ input_handle_done(void *data, struct zwp_input_method_v2 *input_method) {
   uint32_t const right_bound = input_get_right_bound();
   char const *const expanded =
       config_keywords_match(state.surrounding.text, left_bound, right_bound);
-
-  printf(
-      "last: %u, now: %u\n", state.last_expand.cursor, state.surrounding.cursor
-  );
 
   // invalid keyword
   if (!expanded) {
