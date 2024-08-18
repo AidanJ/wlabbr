@@ -5,6 +5,7 @@ In-place abbreviations completion for wlroots based wayland compositors!
 
 ### Configuration File
 Used for defining abbreviation keywords for expansion.
+
 Looks for configuration file under `$XDG_CONFIG_HOME/wlabbr.json` if not explicitly specified as a command argument.
 #### Example
 ```json
