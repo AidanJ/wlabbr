@@ -35,6 +35,26 @@ static char const *config_read_file(char const *file_addr) {
 }
 
 void config_init(char const *file_addr) {
+  static char const *default_filename = "wlabbr.json";
+
+  if (!file_addr) {
+    char const *config_dir = getenv("XDG_CONFIG_HOME");
+    if (!config_dir) {
+      log_report(ERROR, "could not find default config directory");
+      exit(EXIT_FAILURE);
+    }
+
+    char *default_file_addr =
+        malloc(strlen(config_dir) + 1 + strlen(default_filename) + 1);
+
+    strncpy(default_file_addr, config_dir, strlen(config_dir));
+    default_file_addr[strlen(config_dir)] = '/';
+    strncat(default_file_addr, default_filename, strlen(default_filename));
+
+    log_report(INFO, "reading configuration from default location: %s", default_file_addr);
+    file_addr = default_file_addr;
+  }
+
   head = cJSON_Parse(config_read_file(file_addr));
   if (!head) {
     log_report(
@@ -82,7 +102,9 @@ void config_keywords_init() {
             entry.key
         );
       }
-      log_report(INFO, "scanned key: %s, value: %s", abbr->string, abbr->valuestring);
+      log_report(
+          INFO, "scanned key: %s, value: %s", abbr->string, abbr->valuestring
+      );
     }
   }
 }

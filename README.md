@@ -3,7 +3,10 @@
 In-place abbreviations completion for wlroots based wayland compositors!
 
 
-### Example keymap configuration file
+### Configuration File
+Used for defining abbreviation keywords for expansion.
+Looks for configuration file under `$XDG_CONFIG_HOME/wlabbr.json` if not explicitly specified as a command argument.
+#### Example
 ```json
 {
   "keywords": {
@@ -18,7 +21,7 @@ In-place abbreviations completion for wlroots based wayland compositors!
 - [ ] Other
     - [x] prevent recursive expansion
     - [ ] graceful program exit (upon kill syscalls)
-    - [ ] check for default config location in `XDG_CONFIG_HOME`
+    - [x] check for default config location in `XDG_CONFIG_HOME`
     - [ ] key case sensitivity
     - [ ] double space for sentence completion?
 - [ ] JSON
